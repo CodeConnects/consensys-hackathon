@@ -1,7 +1,5 @@
-# Consensys Hackathon
+# Swatter
 
-## Consensys "Not Another Virtual Hackathon" Summer 2023
+## React based mouse speed click game with timer and score.
 
-Master folder containing sub-folders with hackathon notes, experiments, and main hackathon project.
-
-The hackathon runs from July 6th to September 6th, 2023.
+Compete for local high score or global high score saved on Polygon blockchain.
