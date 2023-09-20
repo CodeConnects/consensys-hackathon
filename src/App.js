@@ -1,3 +1,5 @@
+import StatusBar from './components/StatusBar.js';
+import './styles/StatusBar.css';
 import ChooseInsect from './components/ChooseInsect.js';
 import './styles/ChooseInsect.css';
 
@@ -8,6 +10,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Swatter</h1>
+
+        <StatusBar />
 
         <ChooseInsect />
         
