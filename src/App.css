@@ -35,12 +35,12 @@
 }
 
 h1 { 
-  transition: all 1s;
+  transition: all 1s ease-in;
   position: relative;
 }
 
 h1.game-on {
-  position: absolute;
+  position: fixed;
   top: 0px;
   margin: 10px;
 }
