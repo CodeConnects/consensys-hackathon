@@ -24,14 +24,17 @@ const insects = [
 
 function ChooseInsect() {
   return (
-    <ul>
-      {insects.map(insect => (
-        <li key={insect.name} className="insect">
-          <p>{insect.name}</p>
-          <img src={insect.img} alt={insect.alt} className="insect-img" />
-        </li>
-      ))}
-    </ul>
+    <div className="choose-insect">
+      <h2>Who You Swattin?</h2>
+      <ul>
+        {insects.map(insect => (
+          <li key={insect.name} className="insect">
+            <p>{insect.name}</p>
+            <img src={insect.img} alt={insect.alt} className="insect-img" />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

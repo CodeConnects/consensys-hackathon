@@ -7,13 +7,18 @@
   padding: 0;
 }
 
-.choose-insect .insect img {
+.insect img {
   width: 120px;
   height: 120px;
   padding: 16px;
+  margin: 0 18px;
   border-radius: 50%;
   border: 2px solid #fff;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
+}
+
+.insect img:hover {
+  transform: scale(1.2);
 }
