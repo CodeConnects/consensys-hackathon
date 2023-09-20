@@ -33,3 +33,14 @@
 #start-btn:hover {
   opacity: 0.77;
 }
+
+h1 { 
+  transition: all 1s;
+  position: relative;
+}
+
+h1.game-on {
+  position: absolute;
+  top: 0px;
+  margin: 10px;
+}

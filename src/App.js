@@ -9,14 +9,6 @@ import './styles/ChooseInsect.css';
 
 import './App.css';
 
-function getRandomLocation() {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  const x = Math.random() * (width - 200) + 100;
-  const y = Math.random() * (height - 200) + 100;
-  return { x, y };
-}
-
 function App() {
 
   const insects = [
@@ -41,10 +33,21 @@ function App() {
       alt: 'roach'
     }
   ];
+
+  function getRandomLocation() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const x = Math.random() * (width - 200) + 100;
+    const y = Math.random() * (height - 200) + 100;
+    return { x, y };
+  }
   
   const [activeInsect, setActiveInsect] = useState(null);
   const [score, setScore] = useState(0);
   const [timer, setTimer] = useState(30);
+  const [gameOn, setGameOn] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
+  const [gameInsects, setGameInsects] = useState([]);
   
   return (
     <div className="App">
@@ -65,8 +68,7 @@ function App() {
           activeInsect={activeInsect} 
           setActiveInsect={setActiveInsect}
         />
-        
-        <button className='btn' id='start-btn'>Start Swatting</button>
+
       </header>
     </div>
   );
