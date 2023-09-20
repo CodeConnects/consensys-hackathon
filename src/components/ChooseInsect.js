@@ -1,4 +1,4 @@
-function ChooseInsect({ insects, activeInsect, setActiveInsect }) {
+function ChooseInsect({ insects, activeInsect, setActiveInsect, getRandomLocation, setGameInsects, setGameOn }) {
 
   const handleStart = () => {
     document.querySelector('.choose-insect h2').classList.add('hidden');
@@ -7,20 +7,24 @@ function ChooseInsect({ insects, activeInsect, setActiveInsect }) {
     document.querySelector('.choose-insect li:nth-child(2)').classList.add('hidden');
     document.querySelector('.choose-insect li:nth-child(3)').classList.add('hidden');
     document.querySelector('.choose-insect li:nth-child(4)').classList.add('hidden');
-    document.querySelector('.status-bar-item:first-child').classList.add('game-on');
-    document.querySelector('.status-bar-item:last-child').classList.add('game-on');
+
     document.querySelector('h1').classList.add('game-on');
-    /*const newInsect = {
+
+    document.querySelector('.status-bar').classList.add('game-on');
+    document.querySelector('.status-bar').classList.remove('game-off');
+
+    const newInsect = {
       ...insects.find(i => i.name === activeInsect),
       ...getRandomLocation()
     };
     setGameInsects([newInsect]);
-    setGameOn(true);*/
+    setGameOn(true);
+    //alert('Game On!');
   };
   
   return (
     <div className="choose-insect">
-      <h2>Who You Swattin?</h2>
+      <h2>Whatchu Swattin?</h2>
       <ul>
         {insects.map(insect => (
           <li
