@@ -2,10 +2,20 @@ import React, { useState } from 'react';
 
 import StatusBar from './components/StatusBar.js';
 import './styles/StatusBar.css';
+import SwatScreen from './components/SwatScreen.js';
+import './styles/SwatScreen.css';
 import ChooseInsect from './components/ChooseInsect.js';
 import './styles/ChooseInsect.css';
 
 import './App.css';
+
+function getRandomLocation() {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const x = Math.random() * (width - 200) + 100;
+  const y = Math.random() * (height - 200) + 100;
+  return { x, y };
+}
 
 function App() {
 
@@ -47,6 +57,8 @@ function App() {
           timer={timer}
           setTimer={setTimer}
         />
+
+        <SwatScreen />
 
         <ChooseInsect 
           insects={insects} 
