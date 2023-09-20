@@ -6,39 +6,61 @@
   text-align: center;
   padding: 10px;
   transition: transform 1s;
+  /*position: relative;*/
 }
 
 .status-bar-item {
-  height: 120px;
+  height: 98px;
   width: 100px;
   margin: 0px 20px;
   padding: 0px;
   background-color: #777;
   border-bottom: 1px solid #e5e5e5;
-  position: relative;
-  top: auto;
-  right: auto;
+  transition: all 0.5s ease;
+}
+
+.game-on .status-bar-item {
+  position: absolute;
+  top: 0;
+  transform: translate(0, 0);
+}
+.game-on .status-bar-item:first-child {
+  left: 0;
+}
+.game-on .status-bar-item:last-child {
+  right: 0;
 }
 
 .status-bar-title {
-  margin: 0px;
+  margin: 8px 0px 0px;
 }
 
-.status-bar-item:first-child {
-  /*transition: top 1s, left 1s, position 1s;*/
-  transition: all 0.5s ease;
-}
-.status-bar-item:last-child {
-  transition: top 1s, right 1s, position 1s;
+.status-bar-value {
+  margin: 6px;
 }
 
-.status-bar-item.game-on {
-  position: fixed;
-  top: 0;
+h1.game-on {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
-.status-bar-item.game-on:first-child {
-  left: 0;
+
+.status-bar .btn {
+  display: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
-.status-bar-item.game-on:last-child {
-  right: 0;
+
+.status-bar.game-on .btn {
+  display: block;
+  position: absolute;
+  top: 0px;
+}
+.status-bar.game-on #help-btn {
+  left: 25%;
+}
+.status-bar.game-on #reset-btn {
+  right: 25%;
 }
