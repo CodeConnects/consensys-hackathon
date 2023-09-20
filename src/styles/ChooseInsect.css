@@ -7,6 +7,10 @@
   padding: 0;
 }
 
+.insect p {
+  margin: 30px
+}
+
 .insect img {
   width: 120px;
   height: 120px;
@@ -27,4 +31,10 @@
 .insect.active img {
   transform: scale(1.2);
   background-color: rgba(255, 255, 255, 0.8);
+}
+
+.insect.active p {
+  font-size: 34px;
+  margin: 22px;
+  color: #61dafb;
 }
