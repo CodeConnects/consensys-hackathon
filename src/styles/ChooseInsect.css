@@ -38,25 +38,33 @@
 
 .choose-insect h2, .choose-insect li, #start-btn {
   transition: transform 1s, opacity 1s;
+  transform: translate(0,0);
+  opacity: 1;
 }
 
 .choose-insect h2.hidden {
   opacity: 0;
-  transform: translateY(-700%);
+  transform: translateY(-800%);
 }
 
 #start-btn.hidden {
   opacity: 0;
-  transform: translateY(5000%);
+  transform: translateY(800%);
 }
 
-.choose-insect li:nth-child(-n+2).hidden {
-  transform: translateX(-300%);
+.choose-insect li:nth-child(1).hidden {
+  transform: translateX(-250%);
   opacity: 0;
 }
-
-/* For the right two list items */
-.choose-insect li:nth-last-child(-n+2).hidden {
-  transform: translateX(300%);
+.choose-insect li:nth-child(2).hidden {
+  transform: translate(-250%, 250%);
+  opacity: 0;
+}
+.choose-insect li:nth-child(3).hidden {
+  transform: translate(250%, 250%);
+  opacity: 0;
+}
+.choose-insect li:nth-child(4).hidden {
+  transform: translateX(250%);
   opacity: 0;
 }
