@@ -5,6 +5,7 @@
   align-items: center;
   text-align: center;
   padding: 10px;
+  transition: transform 1s;
 }
 
 .status-bar-item {
@@ -14,8 +15,30 @@
   padding: 0px;
   background-color: #777;
   border-bottom: 1px solid #e5e5e5;
+  position: relative;
+  top: auto;
+  right: auto;
 }
 
 .status-bar-title {
   margin: 0px;
+}
+
+.status-bar-item:first-child {
+  /*transition: top 1s, left 1s, position 1s;*/
+  transition: all 0.5s ease;
+}
+.status-bar-item:last-child {
+  transition: top 1s, right 1s, position 1s;
+}
+
+.status-bar-item.game-on {
+  position: fixed;
+  top: 0;
+}
+.status-bar-item.game-on:first-child {
+  left: 0;
+}
+.status-bar-item.game-on:last-child {
+  right: 0;
 }
