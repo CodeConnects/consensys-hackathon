@@ -1,9 +1,5 @@
 .App {
   text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,10 +7,15 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  overflow: hidden;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.App-header {
+  text-align: center;
 }
 
 #start-btn {
@@ -35,12 +36,12 @@
 }
 
 h1 { 
-  transition: all 1s ease-in;
-  position: relative;
+  margin-top: 0px;
+  transition: all 1s ease-in-out;
 }
 
 h1.game-on {
-  position: fixed;
-  top: 0px;
-  margin: 10px;
+  position: absolute;
+  top: 0;
+  transform: translate(0, 0);
 }

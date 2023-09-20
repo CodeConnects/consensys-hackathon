@@ -46,7 +46,6 @@ function App() {
   const [score, setScore] = useState(0);
   const [timer, setTimer] = useState(30);
   const [gameOn, setGameOn] = useState(false);
-  const [gameOver, setGameOver] = useState(false);
   const [gameInsects, setGameInsects] = useState([]);
   
   return (
@@ -59,17 +58,24 @@ function App() {
           setScore={setScore}
           timer={timer}
           setTimer={setTimer}
+          setGameInsects={setGameInsects}
+          setGameOn={setGameOn}
         />
-
-        <SwatScreen />
-
-        <ChooseInsect 
-          insects={insects} 
-          activeInsect={activeInsect} 
-          setActiveInsect={setActiveInsect}
-        />
-
       </header>
+
+      <SwatScreen 
+        gameOn={gameOn}
+        gameInsects={gameInsects}
+      />
+
+      <ChooseInsect 
+        insects={insects} 
+        activeInsect={activeInsect} 
+        setActiveInsect={setActiveInsect}
+        getRandomLocation={getRandomLocation}
+        setGameInsects={setGameInsects}
+        setGameOn={setGameOn}
+      />
     </div>
   );
 }
