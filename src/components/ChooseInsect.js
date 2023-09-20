@@ -1,5 +1,23 @@
 function ChooseInsect({ insects, activeInsect, setActiveInsect }) {
 
+  const handleStart = () => {
+    document.querySelector('.choose-insect h2').classList.add('hidden');
+    document.querySelector('#start-btn').classList.add('hidden');
+    document.querySelector('.choose-insect li:nth-child(1)').classList.add('hidden');
+    document.querySelector('.choose-insect li:nth-child(2)').classList.add('hidden');
+    document.querySelector('.choose-insect li:nth-child(3)').classList.add('hidden');
+    document.querySelector('.choose-insect li:nth-child(4)').classList.add('hidden');
+    document.querySelector('.status-bar-item:first-child').classList.add('game-on');
+    document.querySelector('.status-bar-item:last-child').classList.add('game-on');
+    document.querySelector('h1').classList.add('game-on');
+    /*const newInsect = {
+      ...insects.find(i => i.name === activeInsect),
+      ...getRandomLocation()
+    };
+    setGameInsects([newInsect]);
+    setGameOn(true);*/
+  };
+  
   return (
     <div className="choose-insect">
       <h2>Who You Swattin?</h2>
@@ -15,6 +33,9 @@ function ChooseInsect({ insects, activeInsect, setActiveInsect }) {
           </li>
         ))}
       </ul>
+
+      <button className='btn' id='start-btn' onClick={handleStart}>Start Swatting</button>
+
     </div>
   );
 }

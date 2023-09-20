@@ -20,7 +20,6 @@
   border: 2px solid #fff;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-
 }
 
 .insect img:hover {
@@ -34,7 +33,30 @@
 }
 
 .insect.active p {
-  /*font-size: 34px;
-  margin: 22px;*/
   color: #61dafb;
+}
+
+.choose-insect h2, .choose-insect li, #start-btn {
+  transition: transform 1s, opacity 1s;
+}
+
+.choose-insect h2.hidden {
+  opacity: 0;
+  transform: translateY(-700%);
+}
+
+#start-btn.hidden {
+  opacity: 0;
+  transform: translateY(5000%);
+}
+
+.choose-insect li:nth-child(-n+2).hidden {
+  transform: translateX(-300%);
+  opacity: 0;
+}
+
+/* For the right two list items */
+.choose-insect li:nth-last-child(-n+2).hidden {
+  transform: translateX(300%);
+  opacity: 0;
 }
