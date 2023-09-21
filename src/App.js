@@ -41,8 +41,28 @@ function App() {
     const y = Math.random() * (height - 200) + 100;
     return { x, y };
   }
+
+  function getRandomInsect() {
+    return insects[Math.floor(Math.random() * insects.length)];
+  }
+
+  function createInsect() {
+    if (activeInsect === null) {
+      setActiveInsect(getRandomInsect());
+    }
+    const { x, y } = getRandomLocation();
+    return (
+      <div className='insect' style={{top: `${y}px`, left: `${x}px`}} onClick={handleCatchInsect}>
+        <img src={activeInsect.img} alt={activeInsect.alt} style={{transform: `rotate(${Math.random() * 360}deg)`}} />
+      </div>
+    )
+  }
+
+  function handleCatchInsect() {
+    setScore(prevScore => prevScore + 1);
+  }
   
-  const [activeInsect, setActiveInsect] = useState(null);
+  const [activeInsect, setActiveInsect] = useState({});
   const [score, setScore] = useState(0);
   const [gameLength, setGameLength] = useState(10); // seconds
   const [timer, setTimer] = useState(gameLength);
@@ -91,6 +111,7 @@ function App() {
       <SwatScreen 
         gameOn={gameOn}
         gameInsects={gameInsects}
+        createInsect={createInsect}
       />
 
       <ChooseInsect 
