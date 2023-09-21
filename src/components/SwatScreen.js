@@ -1,6 +1,8 @@
-function SwatScreen() {
+function SwatScreen({gameOn, gameInsects}) {
   return (
-    <div className="swat-screen" />
+    <div className="swat-screen">
+      {gameOn ? <div>Your Game Content Here</div> : null}
+    </div>
   );
 }
 

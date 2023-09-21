@@ -93,8 +93,6 @@ function App() {
         gameInsects={gameInsects}
       />
 
-      {gameOn ? <div>Your Game Content Here</div> : null}
-
       <ChooseInsect 
         insects={insects} 
         activeInsect={activeInsect} 
