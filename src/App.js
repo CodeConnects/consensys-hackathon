@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import StatusBar from './components/StatusBar.js';
 import './styles/StatusBar.css';
@@ -44,9 +44,33 @@ function App() {
   
   const [activeInsect, setActiveInsect] = useState(null);
   const [score, setScore] = useState(0);
-  const [timer, setTimer] = useState(30);
+  const [gameLength, setGameLength] = useState(10); // seconds
+  const [timer, setTimer] = useState(gameLength);
   const [gameOn, setGameOn] = useState(false);
   const [gameInsects, setGameInsects] = useState([]);
+
+  const gameOver = useCallback(() => {
+    alert(`Game Over! You scored ${score} points!`);
+  }, [score]);
+
+  useEffect(() => {
+    if (!gameOn) return;
+  
+    const timerId = setInterval(() => {
+      setTimer(prevSeconds => {
+        if (prevSeconds === 1) {
+          setGameOn(false);
+          gameOver();
+          return 0;
+        }
+        return prevSeconds - 1;
+      });
+    }, 1000);
+  
+    // Cleanup timer when component is unmounted or when game is no longer active
+    return () => clearInterval(timerId);
+  }, [gameOn, gameOver]);
+  
   
   return (
     <div className="App">
@@ -60,6 +84,7 @@ function App() {
           setTimer={setTimer}
           setGameInsects={setGameInsects}
           setGameOn={setGameOn}
+          gameLength={gameLength}
         />
       </header>
 
@@ -67,6 +92,8 @@ function App() {
         gameOn={gameOn}
         gameInsects={gameInsects}
       />
+
+      {gameOn ? <div>Your Game Content Here</div> : null}
 
       <ChooseInsect 
         insects={insects} 

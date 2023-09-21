@@ -18,9 +18,8 @@
   text-align: center;
 }
 
-#start-btn {
+.btn {
   padding: 6px;
-  margin: 44px;
   border-radius: 2px;
   background-color: #61dafb;
   color: #282c34;
@@ -28,11 +27,20 @@
   font-weight: bold;
   border: none;
   cursor: pointer;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
-#start-btn:hover {
-  opacity: 0.77;
+#start-btn {
+  margin: 44px;
+}
+
+.status-bar .btn {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+.btn:hover {
+  opacity: 0.8;
 }
 
 h1 { 

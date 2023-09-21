@@ -1,8 +1,8 @@
-function StatusBar({score, setScore, timer, setTimer, setGameInsects, setGameOn}) {
+function StatusBar({score, setScore, timer, setTimer, setGameInsects, setGameOn, gameLength}) {
   
   const handleReset = () => {
     setScore(0);
-    setTimer(30);
+    setTimer(gameLength);
     document.querySelector('.choose-insect h2').classList.remove('hidden');
     document.querySelector('#start-btn').classList.remove('hidden');
     document.querySelector('.choose-insect li:nth-child(1)').classList.remove('hidden');
