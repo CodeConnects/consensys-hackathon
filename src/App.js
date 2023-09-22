@@ -67,7 +67,7 @@ function App() {
   const [gameLength, setGameLength] = useState(10); // seconds
   const [timer, setTimer] = useState(gameLength);
   const [gameOn, setGameOn] = useState(false);
-  const [gameInsects, setGameInsects] = useState([]);
+  const [gameInsects, setGameInsects] = useState([{}]);
 
   const gameOver = useCallback(() => {
     alert(`Game Over! You scored ${score} points!`);
