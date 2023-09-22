@@ -14,8 +14,7 @@ function ChooseInsect({ insects, activeInsect, setActiveInsect, getRandomLocatio
     document.querySelector('.status-bar').classList.remove('game-off');
 
     const newInsect = {
-      ...insects.find(i => i.name === activeInsect),
-      ...getRandomLocation()
+      key: 0, ...getRandomLocation()
     };
     setGameInsects([newInsect]);
     setGameOn(true);
