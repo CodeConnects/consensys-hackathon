@@ -18,7 +18,7 @@ function ChooseInsect({ insects, activeInsect, setActiveInsect, getRandomLocatio
     };
     setGameInsects([newInsect]);
     setGameOn(true);
-    //alert('Game On!');
+    alert('Game On!');
   };
   
   return (
