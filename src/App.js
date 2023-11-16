@@ -10,6 +10,20 @@ import './styles/ChooseInsect.css';
 import './App.css';
 
 function App() {
+  const gameLength = 10; // seconds
+
+  const [startTime, setStartTime] = useState(null);
+  const [activeInsect, setActiveInsect] = useState({});
+  const [score, setScore] = useState(0);
+  const [timer, setTimer] = useState(gameLength);
+  const [gameOn, setGameOn] = useState(false);
+  const [gameInsects, setGameInsects] = useState([{}]);
+
+  const calculateTimeLeft = () => {
+    const now = new Date();
+    const timePassed = Math.floor((now - startTime) / 1000);
+    return Math.max(gameLength - timePassed, 0);
+  };
 
   const insects = [
     {
@@ -52,8 +66,12 @@ function App() {
     }
     const { x, y } = getRandomLocation();
     return (
-      <div className='insect' style={{top: `${y}px`, left: `${x}px`}} onClick={handleCatchInsect}>
-        <img src={activeInsect.img} alt={activeInsect.alt} style={{transform: `rotate(${Math.random() * 360}deg)`}} />
+      <div className='insect' style={{ top: `${y}px`, left: `${x}px` }} onClick={handleCatchInsect}>
+        <img
+          src={activeInsect.img}
+          alt={activeInsect.alt}
+          style={{ transform: `rotate(${Math.random() * 360}deg)` }}
+        />
       </div>
     )
   }
@@ -61,43 +79,37 @@ function App() {
   function handleCatchInsect() {
     setScore(prevScore => prevScore + 1);
   }
-  
-  const [activeInsect, setActiveInsect] = useState({});
-  const [score, setScore] = useState(0);
-  const [gameLength, setGameLength] = useState(10); // seconds
-  const [timer, setTimer] = useState(gameLength);
-  const [gameOn, setGameOn] = useState(false);
-  const [gameInsects, setGameInsects] = useState([{}]);
 
   const gameOver = useCallback(() => {
     alert(`Game Over! You scored ${score} points!`);
+    setStartTime(null);  // Reset the start time
   }, [score]);
 
+  // timer functionality
   useEffect(() => {
-    if (!gameOn) return;
-  
+    if (!gameOn || !startTime) return;
+
     const timerId = setInterval(() => {
-      setTimer(prevSeconds => {
-        if (prevSeconds === 1) {
-          setGameOn(false);
-          gameOver();
-          return 0;
-        }
-        return prevSeconds - 1;
-      });
+      const timeLeft = calculateTimeLeft();
+      setTimer(timeLeft);
+      if (timeLeft === 0) {
+        clearInterval(timerId);
+        setGameOn(false);
+        gameOver();
+      }
     }, 1000);
-  
+
     // Cleanup timer when component is unmounted or when game is no longer active
     return () => clearInterval(timerId);
-  }, [gameOn, gameOver]);
-  
-  
+  }, [gameOn, gameOver, startTime]);
+
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Swatter</h1>
 
-        <StatusBar 
+        <StatusBar
           score={score}
           setScore={setScore}
           timer={timer}
@@ -108,19 +120,22 @@ function App() {
         />
       </header>
 
-      <SwatScreen 
+      <SwatScreen
         gameOn={gameOn}
         gameInsects={gameInsects}
         createInsect={createInsect}
       />
 
-      <ChooseInsect 
-        insects={insects} 
-        activeInsect={activeInsect} 
+      <ChooseInsect
+        insects={insects}
+        activeInsect={activeInsect}
         setActiveInsect={setActiveInsect}
         getRandomLocation={getRandomLocation}
         setGameInsects={setGameInsects}
         setGameOn={setGameOn}
+        setStartTime={setStartTime}
+        setTimer={setTimer}
+        gameLength={gameLength}
       />
     </div>
   );
