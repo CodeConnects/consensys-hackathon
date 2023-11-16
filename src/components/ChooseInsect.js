@@ -1,4 +1,13 @@
-function ChooseInsect({ insects, activeInsect, setActiveInsect, getRandomLocation, setGameInsects, setGameOn }) {
+function ChooseInsect({
+  insects,
+  activeInsect,
+  setActiveInsect,
+  getRandomLocation,
+  setGameInsects,
+  setGameOn,
+  setStartTime,
+  setTimer,
+  gameLength }) {
 
   const handleStart = () => {
     document.querySelector('.choose-insect h2').classList.add('hidden');
@@ -18,9 +27,11 @@ function ChooseInsect({ insects, activeInsect, setActiveInsect, getRandomLocatio
     };
     setGameInsects([newInsect]);
     setGameOn(true);
-    alert('Game On!');
+    setStartTime(new Date());
+    setTimer(gameLength);
+    console.log('Game On!');
   };
-  
+
   return (
     <div className="choose-insect">
       <h2>Whatchu Swattin?</h2>
